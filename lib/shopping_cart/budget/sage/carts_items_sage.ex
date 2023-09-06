@@ -14,18 +14,14 @@ defmodule ShoppingCart.Budget.Sage.CartsItemsSage do
   def verify_cart(_,%{params: %{cart_id: cart_id}}) do
     case ShoppingCart.Budget.get_carts(cart_id) do
       nil -> {:error, "cart not founded, try to create or verify id"}
-      cart ->
-        IO.inspect("founded cart")
-        {:ok , cart}
+      cart -> {:ok , cart}
     end
   end
 
   def verify_item(_,%{params: %{item_id: item_id}}) do
     case ShoppingCart.Budget.get_items(item_id) do
       nil -> {:error, "item not founded, try to create or verify id"}
-      item ->
-        IO.inspect("founded item")
-        {:ok , item}
+      item -> {:ok , item}
     end
   end
 
