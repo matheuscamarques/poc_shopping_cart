@@ -1,9 +1,4 @@
-# This workflow uses actions that are not certified by GitHub.
-# They are provided by a third-party and are governed by
-# separate terms of service, privacy policy, and support
-# documentation.
-
-name: Elixir CI
+name: Elixir CI with PostgreSQL
 
 on:
   push:
@@ -20,6 +15,17 @@ jobs:
     name: Build and test
     runs-on: ubuntu-latest
 
+    services:
+      postgres:
+        image: postgres:13 # Specify the PostgreSQL version you want to use
+        env:
+          POSTGRES_DB: shopping_cart_test
+          POSTGRES_USER: postgres
+          POSTGRES_PASSWORD: 159753
+        ports:
+          - 5432:5432
+        options: --health-cmd pg_isready --health-interval 10s --health-timeout 5s --health-retries 5
+
     steps:
     - uses: actions/checkout@v3
     - name: Set up Elixir
@@ -35,5 +41,11 @@ jobs:
         restore-keys: ${{ runner.os }}-mix-
     - name: Install dependencies
       run: mix deps.get
+    - name: Configure database connection
+      run: |
+        # Set the DATABASE_URL environment variable to connect to the PostgreSQL service
+        export DATABASE_URL=postgresql://my_test_user:password@localhost:5432/my_test_db
+    - name: Set up the database
+      run: mix ecto.setup # Assuming you are using Ecto for database migrations and setup
     - name: Run tests
       run: mix test

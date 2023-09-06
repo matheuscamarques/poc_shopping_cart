@@ -3,7 +3,7 @@ import Config
 # Configure your database
 config :shopping_cart, ShoppingCart.Repo,
   username: "postgres",
-  password: "postgres",
+  password: "159753",
   hostname: "localhost",
   database: "shopping_cart_dev",
   stacktrace: true,
