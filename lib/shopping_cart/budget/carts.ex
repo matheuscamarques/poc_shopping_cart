@@ -7,9 +7,9 @@ defmodule ShoppingCart.Budget.Carts do
 
 
   schema "carts" do
-    field :total_items, :integer
-    field :total_price, :integer
-    field :total_term_price, :integer
+    field :total_items, :integer, default: 0
+    field :total_price, :integer, default: 0
+    field :total_term_price, :integer, default: 0
 
     timestamps()
   end
@@ -18,6 +18,6 @@ defmodule ShoppingCart.Budget.Carts do
   def changeset(cart, attrs) do
     cart
     |> cast(attrs, [:total_items, :total_term_price, :total_price])
-    |> validate_required([:total_items, :total_term_price, :total_price])
+    # |> validate_required([:total_items, :total_term_price, :total_price])
   end
 end
