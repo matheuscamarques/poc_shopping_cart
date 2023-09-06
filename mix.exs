@@ -53,6 +53,8 @@ defmodule ShoppingCart.MixProject do
       {:absinthe_ecto, "~> 0.1.3"},
       {:kronky, "~> 0.5.0"},
       {:dataloader, "~> 2.0.0"},
+      # SAGE
+      {:sage, "~> 0.6.3"}
     ]
   end
 
