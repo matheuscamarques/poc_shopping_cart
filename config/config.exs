@@ -8,7 +8,12 @@
 import Config
 
 config :shopping_cart,
-  ecto_repos: [ShoppingCart.Repo]
+  ecto_repos: [ShoppingCart.Repo],
+  generators: [binary_id: true]
+
+config :shopping_cart, ShoppingCart.Repo,
+  migration_primary_key: [type: :binary_id],
+  migration_foreign_key: [type: :binary_id]
 
 # Configures the endpoint
 config :shopping_cart, ShoppingCartWeb.Endpoint,
