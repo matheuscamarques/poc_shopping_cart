@@ -8,6 +8,7 @@ defmodule ShoppingCart.Budget do
 
   alias ShoppingCart.Budget.Carts
   alias ShoppingCart.Budget.Sage.CartsItemsSage
+
   @doc """
   Returns the list of cart.
 
@@ -37,6 +38,7 @@ defmodule ShoppingCart.Budget do
   """
   def get_carts!(id), do: Repo.get!(Carts, id)
   def get_carts(id), do: Repo.get(Carts, id)
+
   @doc """
   Creates a cart.
 

@@ -5,8 +5,13 @@ defmodule ShoppingCartWeb.Router do
     plug :accepts, ["json"]
   end
 
-  scope "/api", ShoppingCartWeb do
+  scope "/" do
     pipe_through :api
+
+    forward "/graphiql", Absinthe.Plug.GraphiQL,
+      schema: ShoppingCartWeb.Schema,
+      interface: :playground,
+      context: %{pubsub: ShoppingCartWeb.Endpoint}
   end
 
   # Enable LiveDashboard and Swoosh mailbox preview in development

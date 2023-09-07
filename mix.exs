@@ -48,13 +48,15 @@ defmodule ShoppingCart.MixProject do
       {:plug_cowboy, "~> 2.5"},
       # GRAPHQL
       {:absinthe, "~> 1.7", override: true},
-      {:absinthe_relay, "~> 1.5.0"},
+      {:absinthe_relay, "~> 1.4"},
       {:absinthe_phoenix, "~> 2.0.0"},
       {:absinthe_ecto, "~> 0.1.3"},
       {:kronky, "~> 0.5.0"},
       {:dataloader, "~> 2.0.0"},
       # SAGE
-      {:sage, "~> 0.6.3"}
+      {:sage, "~> 0.6.3"},
+      # Money
+      {:money, "~> 1.12.3"}
     ]
   end
 

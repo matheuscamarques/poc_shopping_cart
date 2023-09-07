@@ -3,8 +3,7 @@ defmodule ShoppingCart.Budget.Carts do
   import Ecto.Changeset
 
   @primary_key {:id, :binary_id, autogenerate: true}
-      @foreign_key_type :binary_id
-
+  @foreign_key_type :binary_id
 
   schema "carts" do
     field :total_items, :integer, default: 0
@@ -18,6 +17,7 @@ defmodule ShoppingCart.Budget.Carts do
   def changeset(cart, attrs) do
     cart
     |> cast(attrs, [:total_items, :total_term_price, :total_price])
+
     # |> validate_required([:total_items, :total_term_price, :total_price])
   end
 end

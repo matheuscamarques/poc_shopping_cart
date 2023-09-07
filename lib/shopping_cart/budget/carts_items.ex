@@ -3,8 +3,7 @@ defmodule ShoppingCart.Budget.CartsItems do
   import Ecto.Changeset
 
   @primary_key {:id, :binary_id, autogenerate: true}
-      @foreign_key_type :binary_id
-
+  @foreign_key_type :binary_id
 
   schema "carts_items" do
     belongs_to :cart, ShoppingCart.Budget.Carts
