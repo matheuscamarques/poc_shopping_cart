@@ -57,6 +57,6 @@ defmodule ShoppingCart.Budget.Sage.CartsItemsSage.DeleteCartItems do
         )
     }
 
-    ShoppingCart.Budget.update_cart(cart, changeset)
+    ShoppingCart.Budget.update_carts(cart, changeset)
   end
 end
