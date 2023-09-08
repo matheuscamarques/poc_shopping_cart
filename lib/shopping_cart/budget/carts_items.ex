@@ -6,8 +6,8 @@ defmodule ShoppingCart.Budget.CartsItems do
   @foreign_key_type :binary_id
 
   schema "carts_items" do
-    belongs_to :cart, ShoppingCart.Budget.Carts
-    belongs_to :item, ShoppingCart.Budget.Items
+    belongs_to :carts, ShoppingCart.Budget.Carts
+    belongs_to :items, ShoppingCart.Budget.Items
     timestamps()
   end
 
