@@ -16,7 +16,7 @@ defmodule ShoppingCartWeb.ConnCase do
   """
 
   use ExUnit.CaseTemplate
-
+  alias ShoppingCart.Utils
   using do
     quote do
       # The default endpoint for testing
@@ -28,8 +28,21 @@ defmodule ShoppingCartWeb.ConnCase do
       import Plug.Conn
       import Phoenix.ConnTest
       import ShoppingCartWeb.ConnCase
+
+
+
     end
   end
+
+  def to_input(input), do: %{"input" => input |> Utils.camelize_keys()}
+
+  defmacro get_query(file) do
+    quote do
+      file = unquote(file)
+      File.read!(Path.join(__DIR__, "#{file}.graphql"))
+    end
+  end
+
 
   setup tags do
     ShoppingCart.DataCase.setup_sandbox(tags)
