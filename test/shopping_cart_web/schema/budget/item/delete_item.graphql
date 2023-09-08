@@ -1,0 +1,11 @@
+mutation DeleteItem($input : DeleteItemInput!){
+  deleteItem(input: $input){
+    item{
+      id,
+      name,
+      discountPercentage,
+      price,
+      termPrice
+    }
+  }
+}

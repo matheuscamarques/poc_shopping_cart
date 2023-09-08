@@ -1,0 +1,11 @@
+mutation CreateItem($input : CreateItemInput!){
+  createItem(input: $input){
+    item{
+      id,
+      name,
+      discountPercentage,
+      price,
+      termPrice
+    }
+  }
+}

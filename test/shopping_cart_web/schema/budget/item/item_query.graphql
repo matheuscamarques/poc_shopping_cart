@@ -1,0 +1,10 @@
+query Item($id: ID!){
+  item(id: $id){
+		id,
+    name,
+    desc,
+    discountPercentage,
+    price,
+    termPrice
+  }
+}

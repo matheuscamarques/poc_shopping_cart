@@ -1,0 +1,10 @@
+query ListItems{
+  listItems{
+		id,
+    name,
+    desc,
+    discountPercentage,
+    price,
+    termPrice
+  }
+}
