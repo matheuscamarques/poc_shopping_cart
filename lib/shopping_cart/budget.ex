@@ -18,7 +18,7 @@ defmodule ShoppingCart.Budget do
       [%Carts{}, ...]
 
   """
-  def list_cart do
+  def list_carts do
     Repo.all(Carts)
   end
 
@@ -51,7 +51,7 @@ defmodule ShoppingCart.Budget do
       {:error, %Ecto.Changeset{}}
 
   """
-  def create_cart(attrs \\ %{}) do
+  def create_carts(attrs \\ %{}) do
     %Carts{}
     |> Carts.changeset(attrs)
     |> Repo.insert()
@@ -69,7 +69,7 @@ defmodule ShoppingCart.Budget do
       {:error, %Ecto.Changeset{}}
 
   """
-  def update_cart(%Carts{} = cart, attrs) do
+  def update_carts(%Carts{} = cart, attrs) do
     cart
     |> Carts.changeset(attrs)
     |> Repo.update()
@@ -87,7 +87,7 @@ defmodule ShoppingCart.Budget do
       {:error, %Ecto.Changeset{}}
 
   """
-  def delete_cart(%Carts{} = cart) do
+  def delete_carts(%Carts{} = cart) do
     Repo.delete(cart)
   end
 
@@ -100,7 +100,7 @@ defmodule ShoppingCart.Budget do
       %Ecto.Changeset{data: %Carts{}}
 
   """
-  def change_cart(%Carts{} = cart, attrs \\ %{}) do
+  def change_carts(%Carts{} = cart, attrs \\ %{}) do
     Carts.changeset(cart, attrs)
   end
 
