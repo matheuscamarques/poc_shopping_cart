@@ -1,4 +1,4 @@
-defmodule ShoppingCartWeb.Schemas.Budget.Items.Types.ItemsType do
+defmodule ShoppingCartWeb.Schemas.Budget.Items.Types.ItemsTypes do
   use Absinthe.Schema.Notation
   use Absinthe.Relay.Schema.Notation, :modern
 
