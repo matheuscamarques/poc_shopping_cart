@@ -8,9 +8,11 @@ defmodule ShoppingCartWeb.Schema do
 
   query do
     import_fields(:items_queries)
+    import_fields(:carts_queries)
   end
 
   mutation do
     import_fields(:items_mutations)
+    import_fields(:carts_mutations)
   end
 end
