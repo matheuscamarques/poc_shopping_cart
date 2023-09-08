@@ -135,7 +135,7 @@ defmodule ShoppingCart.BudgetTest do
 
     test "list_cart/0 returns all cart" do
       cart = cart_fixture()
-      assert Budget.list_cart() == [cart]
+      assert Budget.list_carts() == [cart]
     end
 
     test "get_carts!/1 returns the cart with given id" do
@@ -146,7 +146,7 @@ defmodule ShoppingCart.BudgetTest do
     test "create_cart/1 with valid data creates a cart" do
       valid_attrs = %{total_items: 42, total_price: 42, total_term_price: 42}
 
-      assert {:ok, %Carts{} = cart} = Budget.create_cart(valid_attrs)
+      assert {:ok, %Carts{} = cart} = Budget.create_carts(valid_attrs)
       assert cart.total_items == 42
       assert cart.total_price == 42
       assert cart.total_term_price == 42
@@ -160,7 +160,7 @@ defmodule ShoppingCart.BudgetTest do
       cart = cart_fixture()
       update_attrs = %{total_items: 43, total_price: 43, total_term_price: 43}
 
-      assert {:ok, %Carts{} = cart} = Budget.update_cart(cart, update_attrs)
+      assert {:ok, %Carts{} = cart} = Budget.update_carts(cart, update_attrs)
       assert cart.total_items == 43
       assert cart.total_price == 43
       assert cart.total_term_price == 43
@@ -174,13 +174,13 @@ defmodule ShoppingCart.BudgetTest do
 
     test "delete_cart/1 deletes the cart" do
       cart = cart_fixture()
-      assert {:ok, %Carts{}} = Budget.delete_cart(cart)
+      assert {:ok, %Carts{}} = Budget.delete_carts(cart)
       assert_raise Ecto.NoResultsError, fn -> Budget.get_carts!(cart.id) end
     end
 
     test "change_cart/1 returns a cart changeset" do
       cart = cart_fixture()
-      assert %Ecto.Changeset{} = Budget.change_cart(cart)
+      assert %Ecto.Changeset{} = Budget.change_carts(cart)
     end
   end
 end

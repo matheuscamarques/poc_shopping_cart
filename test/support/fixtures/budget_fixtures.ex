@@ -47,7 +47,7 @@ defmodule ShoppingCart.BudgetFixtures do
         total_price: 42,
         total_term_price: 42
       })
-      |> ShoppingCart.Budget.create_cart()
+      |> ShoppingCart.Budget.create_carts()
 
     cart
   end

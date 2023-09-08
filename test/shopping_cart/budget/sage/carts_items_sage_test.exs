@@ -4,7 +4,7 @@ defmodule ShoppingCart.Budget.Sage.CartsItemsSageTest do
 
   describe "Carts Items Test" do
     test "adding items" do
-      {:ok, cart} = Budget.create_cart()
+      {:ok, cart} = Budget.create_carts()
 
       {:ok, item} =
         Budget.create_items(%{
@@ -16,8 +16,8 @@ defmodule ShoppingCart.Budget.Sage.CartsItemsSageTest do
 
       {:ok, cart, _} =
         Budget.create_cart_items(%{
-          cart_id: cart.id,
-          item_id: item.id
+          carts_id: cart.id,
+          items_id: item.id
         })
 
       assert cart.total_items == 1
