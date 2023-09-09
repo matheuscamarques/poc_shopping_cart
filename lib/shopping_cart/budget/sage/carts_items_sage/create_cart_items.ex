@@ -25,8 +25,15 @@ defmodule ShoppingCart.Budget.Sage.CartsItemsSage.CreateCartsItems do
     end
   end
 
-  defp create_cart_item(_, %{params: %{items_id: item_id, carts_id: cart_id}}) do
-    %ShoppingCart.Budget.CartsItems{carts_id: cart_id, items_id: item_id}
+  defp create_cart_item(%{verify_item: item}, %{params: %{items_id: item_id, carts_id: cart_id}}) do
+    %ShoppingCart.Budget.CartsItems{
+      carts_id: cart_id,
+      items_id: item_id,
+      name: item.name,
+      desc: item.desc,
+      term_price: item.term_price,
+      discount_percentage: item.discount_percentage
+    }
     |> Repo.insert()
   end
 

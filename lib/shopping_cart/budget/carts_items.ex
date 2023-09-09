@@ -6,6 +6,11 @@ defmodule ShoppingCart.Budget.CartsItems do
   @foreign_key_type :binary_id
 
   schema "carts_items" do
+    field :desc, :string
+    field :name, :string
+    field :discount_percentage, :integer
+    field :term_price, :integer
+
     belongs_to :carts, ShoppingCart.Budget.Carts
     belongs_to :items, ShoppingCart.Budget.Items
     timestamps()
