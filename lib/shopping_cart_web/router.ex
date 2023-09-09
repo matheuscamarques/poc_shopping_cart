@@ -8,7 +8,8 @@ defmodule ShoppingCartWeb.Router do
   scope "/" do
     pipe_through :api
 
-    forward "/graphiql", Absinthe.Plug.GraphiQL,
+    forward("/graphql", Absinthe.Plug, schema: ShoppingCartWeb.Schema)
+    forward "/", Absinthe.Plug.GraphiQL,
       schema: ShoppingCartWeb.Schema,
       interface: :playground,
       context: %{pubsub: ShoppingCartWeb.Endpoint}
