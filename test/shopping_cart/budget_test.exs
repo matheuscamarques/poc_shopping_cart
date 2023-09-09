@@ -131,7 +131,6 @@ defmodule ShoppingCart.BudgetTest do
 
     import ShoppingCart.BudgetFixtures
 
-
     test "list_cart/0 returns all cart" do
       cart = cart_fixture()
       assert Budget.list_carts() == [cart]

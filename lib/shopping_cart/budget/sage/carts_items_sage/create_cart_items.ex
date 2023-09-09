@@ -1,8 +1,8 @@
-defmodule ShoppingCart.Budget.Sage.CartsItemsSage.CreateCartItems do
+defmodule ShoppingCart.Budget.Sage.CartsItemsSage.CreateCartsItems do
   import Sage
   alias ShoppingCart.Repo
 
-  def create_cart_items(params) do
+  def create_carts_items(params) do
     new()
     |> run(:verify_cart, &verify_cart/2)
     |> run(:verify_item, &verify_item/2)
