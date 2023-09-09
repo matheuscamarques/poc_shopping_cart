@@ -1,5 +1,7 @@
 # ShoppingCart
 
+[Design Principles](https://github.com/matheuscamarques/poc_shopping_cart/issues/1)
+
 To start your Phoenix server:
 
   * Run `mix setup` to install and setup dependencies
@@ -16,4 +18,4 @@ Ready to run in production? Please [check our deployment guides](https://hexdocs
   * Docs: https://hexdocs.pm/phoenix
   * Forum: https://elixirforum.com/c/phoenix-forum
   * Source: https://github.com/phoenixframework/phoenix
-# poc_shopping_cart
+
