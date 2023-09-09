@@ -2,6 +2,7 @@ defmodule ShoppingCartWeb.Schemas.Budget.Carts.Types.CartsTypes do
   use Absinthe.Schema.Notation
   use Absinthe.Relay.Schema.Notation, :modern
   use Absinthe.Ecto, repo: ShoppingCart.Repo
+
   object :cart do
     field :id, non_null(:id)
     field :total_items, non_null(:integer)
@@ -21,6 +22,5 @@ defmodule ShoppingCartWeb.Schemas.Budget.Carts.Types.CartsTypes do
     end
 
     field :items, list_of(:item), resolve: assoc(:items)
-
   end
 end

@@ -17,6 +17,7 @@ defmodule ShoppingCartWeb.ConnCase do
 
   use ExUnit.CaseTemplate
   alias ShoppingCart.Utils
+
   using do
     quote do
       # The default endpoint for testing
@@ -28,9 +29,6 @@ defmodule ShoppingCartWeb.ConnCase do
       import Plug.Conn
       import Phoenix.ConnTest
       import ShoppingCartWeb.ConnCase
-
-
-
     end
   end
 
@@ -42,7 +40,6 @@ defmodule ShoppingCartWeb.ConnCase do
       File.read!(Path.join(__DIR__, "#{file}.graphql"))
     end
   end
-
 
   setup tags do
     ShoppingCart.DataCase.setup_sandbox(tags)

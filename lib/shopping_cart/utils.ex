@@ -6,7 +6,7 @@ defmodule ShoppingCart.Utils do
 
   def camelize_keys(list) when is_list(list), do: Enum.map(list, &camelize_keys(&1))
 
-  def camelize_keys(term) when is_atom(term) and not (term in [nil, true, false]),
+  def camelize_keys(term) when is_atom(term) and term not in [nil, true, false],
     do: to_string(term)
 
   def camelize_keys(term), do: term

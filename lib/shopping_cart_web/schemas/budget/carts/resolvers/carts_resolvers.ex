@@ -15,30 +15,38 @@ defmodule ShoppingCartWeb.Schemas.Budget.Carts.Resolvers.CartsResolvers do
 
   def get_cart_by_id(_root, %{id: id}, _info) do
     cart = Budget.get_carts(id)
+
     case cart do
-      %Carts{} -> {:ok , cart}
-      nil -> {:error , "Cart Not Founded"}
+      %Carts{} -> {:ok, cart}
+      nil -> {:error, "Cart Not Founded"}
     end
   end
 
-  def update_carts(_root, %{id: id} = attrs , _info) do
+  def update_carts(_root, %{id: id} = attrs, _info) do
     cart = Budget.get_carts(id)
+
     case cart do
-      %Carts{}->
-        case Budget.update_carts(cart,attrs) do
+      %Carts{} ->
+        case Budget.update_carts(cart, attrs) do
           {:ok, cart} -> {:ok, %{cart: cart}}
           other -> other
         end
-      nil -> {:error, "Cart Not Founded"}
+
+      nil ->
+        {:error, "Cart Not Founded"}
     end
   end
 
   def delete_carts(_root, %{id: id}, _info) do
     cart = Budget.get_carts(id)
+
     case cart do
-      nil -> {:error, "Cart Not Founded"}
-      %Carts{}-> {:ok, cart} = Budget.delete_carts(cart)
-                 {:ok, %{cart: cart}}
+      nil ->
+        {:error, "Cart Not Founded"}
+
+      %Carts{} ->
+        {:ok, cart} = Budget.delete_carts(cart)
+        {:ok, %{cart: cart}}
     end
   end
 end
