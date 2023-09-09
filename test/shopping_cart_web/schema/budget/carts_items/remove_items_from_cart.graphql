@@ -1,0 +1,14 @@
+mutation RemoveItemToCart($input: RemoveItemFromCartInput!){
+  removeItemFromCart(input: $input){
+      cart{
+        id
+        totalPrice,
+        totalTermPrice,
+        totalItems,
+        items{
+          name,
+          price
+        }
+      }
+    }
+}

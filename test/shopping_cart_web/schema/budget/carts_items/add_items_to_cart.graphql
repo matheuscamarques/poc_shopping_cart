@@ -1,0 +1,14 @@
+mutation AddItemToCart($input: AddItemToCartInput!){
+  addItemToCart(input: $input){
+      cart{
+        id
+        totalPrice,
+        totalTermPrice,
+        totalItems
+        items{
+          name,
+          price
+        }
+      }
+    }
+}
