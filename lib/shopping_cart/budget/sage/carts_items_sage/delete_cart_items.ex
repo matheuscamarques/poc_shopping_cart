@@ -1,9 +1,9 @@
-defmodule ShoppingCart.Budget.Sage.CartsItemsSage.DeleteCartItems do
+defmodule ShoppingCart.Budget.Sage.CartsItemsSage.DeleteCartsItems do
   import Sage
   import Ecto.Query
   alias ShoppingCart.Repo
 
-  def delete_cart_items(params) do
+  def delete_carts_items(params) do
     new()
     |> run(:verify_cart, &verify_cart/2)
     |> run(:verify_item, &verify_item/2)
@@ -13,24 +13,24 @@ defmodule ShoppingCart.Budget.Sage.CartsItemsSage.DeleteCartItems do
     |> transaction(ShoppingCart.Repo, %{params: params})
   end
 
-  defp verify_cart(_, %{params: %{cart_id: cart_id}}) do
+  defp verify_cart(_, %{params: %{carts_id: cart_id}}) do
     case ShoppingCart.Budget.get_carts(cart_id) do
       nil -> {:error, "cart not founded, try to create or verify id"}
       cart -> {:ok, cart}
     end
   end
 
-  defp verify_item(_, %{params: %{item_id: item_id}}) do
+  defp verify_item(_, %{params: %{items_id: item_id}}) do
     case ShoppingCart.Budget.get_items(item_id) do
       nil -> {:error, "item not founded, try to create or verify id"}
       item -> {:ok, item}
     end
   end
 
-  def verify_cart_item(_, %{params: %{item_id: item_id, cart_id: cart_id}}) do
+  def verify_cart_item(_, %{params: %{items_id: item_id, carts_id: cart_id}}) do
     query =
       from ci in ShoppingCart.Budget.CartsItems,
-        where: ci.cart_id == ^cart_id and ci.item_id == ^item_id,
+        where: ci.carts_id == ^cart_id and ci.items_id == ^item_id,
         select: ci
 
     items = Repo.all(query)

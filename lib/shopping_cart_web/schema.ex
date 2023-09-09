@@ -14,5 +14,6 @@ defmodule ShoppingCartWeb.Schema do
   mutation do
     import_fields(:items_mutations)
     import_fields(:carts_mutations)
+    import_fields(:carts_items_mutations)
   end
 end
