@@ -6,8 +6,7 @@ defmodule ShoppingCartWeb.Schemas.Budget.Carts.Mutations.CartsMutations do
 
   object :carts_mutations do
     @desc "Create new cart"
-    payload field(:create_cart) do
-
+    payload field(:create_carts) do
       output do
         field(:cart, :cart)
       end
@@ -16,7 +15,7 @@ defmodule ShoppingCartWeb.Schemas.Budget.Carts.Mutations.CartsMutations do
     end
 
     @desc "Delete cart"
-    payload field(:delete_cart) do
+    payload field(:delete_carts) do
       input do
         field :id, non_null(:string)
       end
@@ -28,5 +27,4 @@ defmodule ShoppingCartWeb.Schemas.Budget.Carts.Mutations.CartsMutations do
       resolve(&CartsResolvers.delete_carts/3)
     end
   end
-
 end
