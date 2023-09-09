@@ -15,7 +15,7 @@ defmodule ShoppingCart.Budget.Sage.CartsItemsSageTest do
         })
 
       {:ok, cart, _} =
-        Budget.create_cart_items(%{
+        Budget.create_carts_items(%{
           carts_id: cart.id,
           items_id: item.id
         })

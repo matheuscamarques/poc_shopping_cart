@@ -14,7 +14,7 @@ defmodule ShoppingCart.BudgetFixtures do
         item_id: "",
         cart_id: ""
       })
-      |> ShoppingCart.Budget.create_cart_items()
+      |> ShoppingCart.Budget.create_carts_items()
 
     cart_items
   end

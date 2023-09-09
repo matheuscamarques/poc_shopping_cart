@@ -1,10 +1,10 @@
 defmodule ShoppingCartWeb.Schema.Budget.ItemsSchemaTest do
   use ShoppingCartWeb.ConnCase
 
-  @create_item_mutation get_query("create_item")
-  @update_item_mutation get_query("update_item")
-  @delete_item_mutation get_query("delete_item")
-  @item_query get_query("item_query")
+  @create_item_mutation get_query("create_items")
+  @update_item_mutation get_query("update_items")
+  @delete_item_mutation get_query("delete_items")
+  @item_query get_query("items_query")
   @list_items_query get_query("list_items_query")
 
   test "mutation: create_item", %{conn: conn} do

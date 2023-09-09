@@ -115,7 +115,7 @@ defmodule ShoppingCart.Budget do
       [%CartsItems{}, ...]
 
   """
-  def list_cart_items do
+  def list_carts_items do
     Repo.all(CartsItems)
   end
 
@@ -133,7 +133,8 @@ defmodule ShoppingCart.Budget do
       ** (Ecto.NoResultsError)
 
   """
-  def get_cart_items!(id), do: Repo.get!(CartsItems, id)
+  def get_carts_items!(id), do: Repo.get!(CartsItems, id)
+  def get_carts_items(id), do: Repo.get(CartsItems, id)
 
   @doc """
   Creates a cart_items.
@@ -147,8 +148,8 @@ defmodule ShoppingCart.Budget do
       {:error, %Ecto.Changeset{}}
 
   """
-  def create_cart_items(attrs \\ %{}) do
-    CartsItemsSage.create_cart_items(attrs)
+  def create_carts_items(attrs \\ %{}) do
+    CartsItemsSage.create_carts_items(attrs)
   end
 
   @doc """
@@ -163,8 +164,8 @@ defmodule ShoppingCart.Budget do
       {:error, %Ecto.Changeset{}}
 
   """
-  def update_cart_items(%CartsItems{} = cart_items, attrs) do
-    cart_items
+  def update_carts_items(%CartsItems{} = carts_items, attrs) do
+    carts_items
     |> CartsItems.changeset(attrs)
     |> Repo.update()
   end
@@ -181,8 +182,8 @@ defmodule ShoppingCart.Budget do
       {:error, %Ecto.Changeset{}}
 
   """
-  def delete_cart_items(%CartsItems{} = cart_items) do
-    Repo.delete(cart_items)
+  def delete_carts_items(%{carts_id: _, items_id: _} = carts_items) do
+    CartsItemsSage.delete_carts_items(carts_items)
   end
 
   @doc """

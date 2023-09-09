@@ -131,7 +131,6 @@ defmodule ShoppingCart.BudgetTest do
 
     import ShoppingCart.BudgetFixtures
 
-    @invalid_attrs %{total_items: nil, total_price: nil, total_term_price: nil}
 
     test "list_cart/0 returns all cart" do
       cart = cart_fixture()
