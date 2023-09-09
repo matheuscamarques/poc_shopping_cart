@@ -1,4 +1,4 @@
-defmodule ShoppingCartWeb.Schema.Budget.ItemSchema do
+defmodule ShoppingCartWeb.Schema.Budget.ItemsSchemaTest do
   use ShoppingCartWeb.ConnCase
 
   @create_item_mutation get_query("create_item")
@@ -11,15 +11,16 @@ defmodule ShoppingCartWeb.Schema.Budget.ItemSchema do
     conn =
       post(conn, "/graphiql", %{
         "query" => @create_item_mutation,
-        "variables" => to_input(%{
-          name: "Head Set",
-          desc: "Da para ouvir tudo!",
-          discountPercentage: 75,
-          termPrice: 100000
-        })
+        "variables" =>
+          to_input(%{
+            name: "Head Set",
+            desc: "Da para ouvir tudo!",
+            discountPercentage: 75,
+            termPrice: 100_000
+          })
       })
 
-     %{
+    %{
       "data" => %{
         "createItem" => %{"item" => item}
       }
@@ -33,19 +34,21 @@ defmodule ShoppingCartWeb.Schema.Budget.ItemSchema do
 
   test "mutation: update_item", %{conn: conn} do
     {:ok, %{id: id}} = item_factory()
+
     conn =
       post(conn, "/graphiql", %{
         "query" => @update_item_mutation,
-        "variables" => to_input(%{
-          id: id,
-          name: "Head Set Updated",
-          desc: "Da para ouvir tudo!",
-          discountPercentage: 75,
-          termPrice: 100000
-        })
+        "variables" =>
+          to_input(%{
+            id: id,
+            name: "Head Set Updated",
+            desc: "Da para ouvir tudo!",
+            discountPercentage: 75,
+            termPrice: 100_000
+          })
       })
 
-     %{
+    %{
       "data" => %{
         "updateItem" => %{"item" => item}
       }
@@ -60,25 +63,28 @@ defmodule ShoppingCartWeb.Schema.Budget.ItemSchema do
 
   test "mutation: delete_item", %{conn: conn} do
     {:ok, %{id: id}} = item_factory()
+
     conn =
       post(conn, "/graphiql", %{
         "query" => @delete_item_mutation,
-        "variables" => to_input(%{
-          id: id
-        })
+        "variables" =>
+          to_input(%{
+            id: id
+          })
       })
 
-     assert %{
-      "data" => %{
-        "deleteItem" => %{"item" => _item}
-      }
-    } = json_response(conn, 200)
+    assert %{
+             "data" => %{
+               "deleteItem" => %{"item" => _item}
+             }
+           } = json_response(conn, 200)
 
     assert ShoppingCart.Budget.get_items(id) == nil
   end
 
   test "query: item", %{conn: conn} do
     {:ok, %{id: id}} = item_factory()
+
     conn =
       post(conn, "/graphiql", %{
         "query" => @item_query,
@@ -87,11 +93,9 @@ defmodule ShoppingCartWeb.Schema.Budget.ItemSchema do
         }
       })
 
-     assert %{
-      "data" =>
-         %{"item" => item}
-
-    } = json_response(conn, 200)
+    assert %{
+             "data" => %{"item" => item}
+           } = json_response(conn, 200)
 
     assert item["discountPercentage"] == 75
     assert item["name"] == "Head Set"
@@ -103,18 +107,18 @@ defmodule ShoppingCartWeb.Schema.Budget.ItemSchema do
     {:ok, _} = item_factory()
     {:ok, _} = item_factory()
     {:ok, _} = item_factory()
+
     conn =
       post(conn, "/graphiql", %{
         "query" => @list_items_query
       })
 
-     assert %{
-      "data" => %{"listItems" => items}
-    } = json_response(conn, 200)
+    assert %{
+             "data" => %{"listItems" => items}
+           } = json_response(conn, 200)
 
     assert length(items) == 3
   end
-
 
   def item_factory() do
     items_params() |> ShoppingCart.Budget.create_items()
@@ -125,7 +129,7 @@ defmodule ShoppingCartWeb.Schema.Budget.ItemSchema do
       name: "Head Set",
       desc: "Da para ouvir tudo!",
       discount_percentage: 75,
-      term_price: 100000
+      term_price: 100_000
     }
   end
 end
