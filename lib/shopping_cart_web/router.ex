@@ -15,7 +15,8 @@ defmodule ShoppingCartWeb.Router do
       interface: :playground,
       context: %{pubsub: ShoppingCartWeb.Endpoint}
   end
-   # Enable LiveDashboard and Swoosh mailbox preview in development
+
+  # Enable LiveDashboard and Swoosh mailbox preview in development
   #  if Application.compile_env(:shopping_cart, :dev_routes) do
   #   # If you want to use the LiveDashboard in production, you should put
   #   # it behind authentication and allow only admins to access it.

@@ -13,7 +13,8 @@ config :kaffe,
     topics: ["payments"]
   ],
   producer: [
-    endpoints: [localhost: 9092], # [hostname: port]
+    # [hostname: port]
+    endpoints: [localhost: 9092],
     topics: ["payments"]
   ]
 
