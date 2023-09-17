@@ -9,7 +9,7 @@ defmodule ShoppingCart.Budget.Carts do
     field :total_items, :integer, default: 0
     field :total_price, :integer, default: 0
     field :total_term_price, :integer, default: 0
-    has_many :items,  ShoppingCart.Budget.CartsItems
+    has_many :items, ShoppingCart.Budget.CartsItems
     timestamps()
   end
 
