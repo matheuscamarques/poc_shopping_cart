@@ -35,3 +35,5 @@ shopping_cart-*.tar
 npm-debug.log
 /assets/node_modules/
 
+
+/rabbitmq/

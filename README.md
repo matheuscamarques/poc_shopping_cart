@@ -2,6 +2,16 @@
 
 [Design Principles](https://github.com/matheuscamarques/poc_shopping_cart/issues/1)
 
+Prerequisite Start Docker-Compose
+  * Run `docker-compose up --build`
+  * In docker has these services  
+    *  postgres:15
+    *  cp-zookeeper:latest
+    *  cp-kafka:latest
+    *  kafdrop:latest
+    *  grafana:latest
+    *  prometheus:latest
+
 To start your Phoenix server:
 
   * Run `mix setup` to install and setup dependencies
