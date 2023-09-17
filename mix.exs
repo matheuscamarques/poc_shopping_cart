@@ -19,7 +19,7 @@ defmodule ShoppingCart.MixProject do
   def application do
     [
       mod: {ShoppingCart.Application, []},
-      extra_applications: [:logger, :runtime_tools]
+      extra_applications: [:logger, :runtime_tools, :kaffe]
     ]
   end
 
@@ -56,7 +56,9 @@ defmodule ShoppingCart.MixProject do
       # SAGE
       {:sage, "~> 0.6.3"},
       # Money
-      {:money, "~> 1.12.3"}
+      {:money, "~> 1.12.3"},
+      # Kafka
+      {:kaffe, "~> 1.9"}
     ]
   end
 

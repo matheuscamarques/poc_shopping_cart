@@ -4,10 +4,16 @@ defmodule ShoppingCart.Application do
   @moduledoc false
 
   use Application
-
   @impl true
   def start(_type, _args) do
+    IO.inspect(node())
+
     children = [
+      %{
+        id: Kaffe.GroupMemberSupervisor,
+        start: {Kaffe.GroupMemberSupervisor, :start_link, []},
+        type: :supervisor
+      },
       # Start the Telemetry supervisor
       ShoppingCartWeb.Telemetry,
       # Start the Ecto repository

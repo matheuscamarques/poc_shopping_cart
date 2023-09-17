@@ -1,9 +1,26 @@
 import Config
 
+config :kaffe,
+  consumer: [
+    endpoints: [localhost: 9092],
+    consumer_group: "consumer-group",
+    message_handler: MessageProcessor,
+    # endpoints references [hostname: port]. Kafka is configured to run on port 9092.
+    # In this example, the hostname is localhost because we've started the Kafka server
+    # straight from our machine. However, if the server is dockerized, the hostname will
+    # be called whatever is specified by that container (usually "kafka")
+    # add a list of topics you plan to produce messages to
+    topics: ["payments"]
+  ],
+  producer: [
+    endpoints: [localhost: 9092], # [hostname: port]
+    topics: ["payments"]
+  ]
+
 # Configure your database
 config :shopping_cart, ShoppingCart.Repo,
   username: "postgres",
-  password: "159753",
+  password: "postgres",
   hostname: "localhost",
   database: "shopping_cart_dev",
   stacktrace: true,
@@ -19,7 +36,7 @@ config :shopping_cart, ShoppingCart.Repo,
 config :shopping_cart, ShoppingCartWeb.Endpoint,
   # Binding to loopback ipv4 address prevents access from other machines.
   # Change to `ip: {0, 0, 0, 0}` to allow access from other machines.
-  http: [ip: {127, 0, 0, 1}, port: 4000],
+  http: [ip: {0, 0, 0, 0}, port: 4000],
   check_origin: false,
   code_reloader: true,
   debug_errors: true,
