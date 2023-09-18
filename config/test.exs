@@ -7,7 +7,7 @@ import Config
 # Run `mix help test` for more information.
 config :shopping_cart, ShoppingCart.Repo,
   username: "postgres",
-  password: "159753",
+  password: "postgres",
   hostname: "localhost",
   database: "shopping_cart_test",
   pool: Ecto.Adapters.SQL.Sandbox,
