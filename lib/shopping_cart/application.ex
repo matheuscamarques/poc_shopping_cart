@@ -7,11 +7,11 @@ defmodule ShoppingCart.Application do
   @impl true
   def start(_type, _args) do
     children = [
-      %{
-        id: Kaffe.GroupMemberSupervisor,
-        start: {Kaffe.GroupMemberSupervisor, :start_link, []},
-        type: :supervisor
-      },
+      # %{
+      #   id: Kaffe.GroupMemberSupervisor,
+      #   start: {Kaffe.GroupMemberSupervisor, :start_link, []},
+      #   type: :supervisor
+      # },
       # Start the Telemetry supervisor
       ShoppingCartWeb.Telemetry,
       # Start the Ecto repository
