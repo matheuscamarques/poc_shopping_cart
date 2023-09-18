@@ -27,28 +27,14 @@ jobs:
 
       zookeeper:
         image: confluentinc/cp-zookeeper:latest
-        networks: 
-          - broker-kafka
-        environment:
+        env:
           ZOOKEEPER_CLIENT_PORT: 2181
-
-      db:
-        image: postgres:15
-        environment:
-          POSTGRES_USER: postgres
-          POSTGRES_PASSWORD: postgres
-        ports:
-          - "5432:5432"
 
       kafka:
         image: confluentinc/cp-kafka:latest
-        networks: 
-          - broker-kafka
-        depends_on:
-          - zookeeper
         ports:
           - 9092:9092
-        environment:
+        env:
           KAFKA_BROKER_ID: 1
           KAFKA_ZOOKEEPER_CONNECT: zookeeper:2181
           KAFKA_ADVERTISED_LISTENERS: PLAINTEXT://kafka:29092,PLAINTEXT_HOST://localhost:9092
@@ -58,34 +44,22 @@ jobs:
 
       kafdrop:
         image: obsidiandynamics/kafdrop:latest
-        networks: 
-          - broker-kafka
-        depends_on:
-          - kafka
         ports:
           - 19000:9000
-        environment:
+        env:
           KAFKA_BROKERCONNECT: kafka:29092
 
       grafana:
         image: grafana/grafana:latest
         ports:
           - "3000:3000"
-        depends_on:
-          - prometheus
 
       prometheus:
         image: prom/prometheus:latest
         volumes:
           - ./prometheus:/etc/prometheus
-        command:
-          - "--config.file=/etc/prometheus/prometheus.yml"
         ports:
           - "9090:9090"
-
-    networks: 
-      broker-kafka:
-        driver: bridge
 
     steps:
     - uses: actions/checkout@v3
