@@ -59,6 +59,16 @@ services:
       - "--config.file=/etc/prometheus/prometheus.yml"
     ports:
       - "9090:9090"
+  web:
+    build: .
+    depends_on:
+      - db
+    environment:
+      MIX_ENV: dev
+    ports:
+      - '4000:4000'
+    volumes:
+      - .:/app
 
 networks: 
   broker-kafka:
