@@ -21,9 +21,11 @@ defmodule ShoppingCart.Application do
       # Start Finch
       {Finch, name: ShoppingCart.Finch},
       # Start the Endpoint (http/https)
-      ShoppingCartWeb.Endpoint
+      ShoppingCartWeb.Endpoint,
+      ShoppingCart.PromEx
       # Start a worker by calling: ShoppingCart.Worker.start_link(arg)
       # {ShoppingCart.Worker, arg}
+
     ]
 
     # See https://hexdocs.pm/elixir/Supervisor.html
@@ -31,7 +33,6 @@ defmodule ShoppingCart.Application do
     opts = [strategy: :one_for_one, name: ShoppingCart.Supervisor]
     Supervisor.start_link(children, opts)
   end
-
   # Tell Phoenix to update the endpoint configuration
   # whenever the application is updated.
   @impl true

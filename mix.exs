@@ -58,7 +58,8 @@ defmodule ShoppingCart.MixProject do
       # Money
       {:money, "~> 1.12.3"},
       # Kafka
-      {:kaffe, "~> 1.9"}
+      {:kaffe, "~> 1.9"},
+      {:prom_ex, "~> 1.9.0"},
     ]
   end
 
