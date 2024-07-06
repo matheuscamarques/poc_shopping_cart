@@ -7,6 +7,13 @@
 # General application configuration
 import Config
 
+config :shopping_cart, ShoppingCart.PromEx,
+  disabled: false,
+  manual_metrics_start_delay: :no_delay,
+  drop_metrics_groups: [],
+  grafana: :disabled,
+  metrics_server: :disabled
+
 config :shopping_cart,
   ecto_repos: [ShoppingCart.Repo],
   generators: [binary_id: true]
